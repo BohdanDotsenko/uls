@@ -3,17 +3,11 @@
 
 #include <string.h>
 #include <errno.h>
-#include "libmx/inc/libmx.h"
+#include "libmx.h"
 #include "sys/stat.h"
 #include <sys/types.h>//opendir
 #include <dirent.h> // opendir readdir
 #include <limits.h> // limits PATH_MAX
-#include <sys/ioctl.h>
-#include <stdio.h>
-#include <unistd.h>
-#include<sys/ioccom.h>
-#include <grp.h>
-#include <pwd.h>
 
 #define MX_IS_BLK(mode) (((mode) & S_IFMT) == S_IFBLK)
 #define MX_IS_CHR(mode) (((mode) & S_IFMT) == S_IFCHR)
@@ -24,7 +18,7 @@
 #define MX_IS_WHT(mode) (((mode) & S_IFMT) == S_IFWHT)
 #define MX_IS_REG(mode) (((mode) & S_IFMT) == S_IFREG)
 
-#define MY_FLAGS "LARarlstucSClm1" //our flags
+#define MY_FLAGS "LARarls" //our flags
 
 //typedef struct stat t_st;
 struct stat *buf;
@@ -56,15 +50,13 @@ void mx_indification_args(t_lit **args, t_head *head);
 int mx_check_dir(t_lit ***args);
 int mx_check_file(t_lit ***args);
 t_lit **mx_createlist(char **name, int count); // after open dir we have array ---> new_list ----> and working with him
-void mx_opendir(t_lit **new_d, t_head *head);
+void mx_opendir(t_lit **new_d, t_head * head);
 void mx_join(char **res, char *s2);
 void mx_add_new_dir_array(t_lit **args, t_lit **new_d);
 void mx_add_new_file_array(t_lit **args, t_lit **new_f);
 t_lit** mx_arg(t_lit **args);
 void mx_del_fils(t_lit ***args, t_head *head);
 void mx_del_litarr(t_lit ***args, t_lit **dir);
-void mx_multi(t_lit **names, int ind);
-void mx_logic(t_lit **new_d, t_head *head);
 
 #endif
 
