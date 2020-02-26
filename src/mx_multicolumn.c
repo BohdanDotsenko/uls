@@ -5,7 +5,7 @@ int max_len_names(t_lit **names, int ind) {
     int temp = 0;
 
     for (int i = 0; names[ind]->open[i]; i++) {
-        temp = mx_strlen(names[0]->open[i]->name);
+        temp = mx_strlen(names[ind]->open[i]->name);
         if (temp > max)
             max = temp;
     }
@@ -33,7 +33,7 @@ static void printcols(t_lit **names, int rows, int num, int maxlen, int ind) {
     for (int i = 0; i < rows; i++) {
         for (int j = 0; i + j < num; j += rows) {
             mx_printstr(names[ind]->open[i + j]->name);
-            if (names[0]->open[i + j + 1] && (i + j + rows < num))
+            if (names[ind]->open[i + j + 1] && (i + j + rows < num))
                 mx_print_tab(mx_strlen(names[ind]->open[j + i]->name), maxlen);
         }
         if (i != rows - 1)
