@@ -56,7 +56,7 @@ static void print_names(t_lit **names, int maxlen, int wincol, int ind) {
             rows += 1;
         printcols(names, rows, num, maxlen, ind);
     } else
-        for (int i = 0; names[i] != NULL; i++) {
+        for (int i = 0; names[ind]->open[i] != NULL; i++) {
                 for (int j = 0; names[i]->open[j] != NULL; j++) {
                 mx_printstr(names[i]->open[j]->name);
 
