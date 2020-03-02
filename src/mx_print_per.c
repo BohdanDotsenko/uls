@@ -65,4 +65,4 @@ void mx_print_per(t_lit *name) {
     for (int i = 0; chmod[i]; i++) 
         mx_printchar(chmod[i]);
     mx_printchar(' ');
-    }
+}

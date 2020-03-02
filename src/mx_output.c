@@ -25,22 +25,7 @@ static void all_output(t_lit **new_d, t_head *head) {
     }
 }
 
-void mx_output(t_lit **new_d, t_head *head) {
-    if (new_d) {
-        for (int i = 0; new_d[i] != NULL; i++) {
-            if (head->output == 1 || head->sum_err > 0) {
-                if (new_d[i]->fullpath[0] == '/' && new_d[i]->fullpath[1] == '/')
-                    mx_printstr(&new_d[i]->fullpath[1]);
-                else
-                    mx_printstr(new_d[i]->fullpath);
-                mx_printchar(':');
-                mx_printchar('\n');
-            }
-            all_output(&new_d[i], head);
-            if (new_d[i + 1] != NULL)
-                mx_printchar('\n');
-        }
-    }
+static void del_data(t_lit **new_d, t_head *head) {
     for(int i = 0; new_d[i]; i++) {
         if (head->flags[mx_get_char_index(MY_FLAGS, 'R')] == 0) {
             for(int j = 0; new_d[i]->open[j]; j++) {
@@ -56,5 +41,23 @@ void mx_output(t_lit **new_d, t_head *head) {
         free(new_d[i]->open);
         free(new_d[i]);
     }
-    // free(new_d);
+}
+
+void mx_output(t_lit **new_d, t_head *head) {
+    if (new_d) {
+        for (int i = 0; new_d[i] != NULL; i++) {
+            if (head->output == 1 || head->sum_err > 0) {
+                if (new_d[i]->fullpath[0] == '/' && new_d[i]->fullpath[1] == '/')
+                    mx_printstr(&new_d[i]->fullpath[1]);
+                else
+                    mx_printstr(new_d[i]->fullpath);
+                mx_printchar(':');
+                mx_printchar('\n');
+            }
+            all_output(&new_d[i], head);
+            if (new_d[i + 1])
+                mx_printchar('\n');
+        }
+    }
+    del_data(new_d, head);
 }

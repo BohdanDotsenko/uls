@@ -60,20 +60,16 @@ int mx_check_dir(t_lit ***args) {
     return sum_dir;
 }
 
-void mx_indification_args(t_lit **args, t_head *head) {
-    t_lit **new_f = NULL;
-    t_lit **new_d = NULL;
-    head->sum_dir = mx_check_dir(&args);
-    head->sum_file = mx_check_file(&args);
-
-    if ((head->sum_dir > 0 && head->sum_file > 0)  || head->sum_dir > 1) // для вывода путей папок. если > 1, печатать имья 
+static void ind_args2(t_lit **args, t_head *head, 
+                      t_lit **new_f, t_lit **new_d) {
+    if ((head->sum_dir > 0 && head->sum_file > 0)  || head->sum_dir > 1)
         head->output = 1;
     if (head->sum_file) {
         new_f = (t_lit **)malloc((head->sum_file + 1) * sizeof(t_lit *));
-        mx_add_new_file_array(args, new_f);// we need see whats flag we have ----> use this flag ----> print
+        mx_add_new_file_array(args, new_f);
     }
     if (head->sum_dir) {
-        new_d = (t_lit **)malloc((head->sum_dir + 1) * sizeof(t_lit *)); // i need free new_ar[full] == NULL/
+        new_d = (t_lit **)malloc((head->sum_dir + 1) * sizeof(t_lit *));
         mx_add_new_dir_array(args, new_d);
     }
     if (new_f) {
@@ -84,4 +80,13 @@ void mx_indification_args(t_lit **args, t_head *head) {
        mx_opendir(new_d, head);
        free(new_d);
     }
+}
+
+void mx_indification_args(t_lit **args, t_head *head) {
+    t_lit **new_f = NULL;
+    t_lit **new_d = NULL;
+    head->sum_dir = mx_check_dir(&args);
+    head->sum_file = mx_check_file(&args);
+
+    ind_args2(args, head, new_f, new_d);
 }

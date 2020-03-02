@@ -27,14 +27,17 @@ static void parse_type_output(char c, t_head *head) {
         head->flags[mx_get_char_index(MY_FLAGS, c)] = 1;
 }
 
-
-int mx_check_flags(int argc, char *argv[], t_head *head) {
-    int res = 1;
-
+static void if_isatty(t_head *head) {
     if (isatty(1))
         head->flags[mx_get_char_index(MY_FLAGS, 'C')] = 1;
     else 
         head->flags[mx_get_char_index(MY_FLAGS, '1')] = 1;
+}
+
+int mx_check_flags(int argc, char *argv[], t_head *head) {
+    int res = 1;
+
+    if_isatty(head);
     for (int i = 1; i < argc && argv[i][0] == '-'; i++) {
         if (argv[i][0] == '-' && !argv[i][1])
             return res;
@@ -46,11 +49,8 @@ int mx_check_flags(int argc, char *argv[], t_head *head) {
                 parse_type_output(argv[i][j], head);
                 if (mx_get_char_index(MY_FLAGS, (argv[i][j])) == -1)
                     illegal_option(argv[i][j]);
-            //     h = mx_get_char_index(MY_FLAGS, argv[i][j]);
-            //     if (h >= 0)
-            //         head->flags[h] = 1;
             }
-        }// когда залетает просто -, нужно написать ошибку
+        }
     }
     return res;
 }

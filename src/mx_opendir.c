@@ -1,5 +1,19 @@
 #include "uls.h"
 
+static bool check_aa(char *ds, t_head *head) {
+    if (head->flags[mx_get_char_index(MY_FLAGS, 'a')] == 1)
+        return true;
+     if (head->flags[mx_get_char_index(MY_FLAGS, 'A')] == 1) {
+            if (mx_strcmp(ds, ".") == 0 || mx_strcmp(ds, "..") == 0)   
+                return false;
+            else
+                return true;
+        }
+    if (ds[0] == '.')
+        return false;
+    return true;
+}
+
 void mx_del(t_lit ***args) {
     t_lit **kill_arr = *args;
 
@@ -17,7 +31,7 @@ void mx_del(t_lit ***args) {
     }
 }
 
-static int count_inside_dir(t_lit **new_d) {
+static int count_inside_dir(t_lit **new_d, t_head *head) {
     int count = 0;
     t_lit *tmp = *new_d;
     DIR *dtr;
@@ -29,9 +43,8 @@ static int count_inside_dir(t_lit **new_d) {
         if (MX_IS_DIR(tmp->t_st.st_mode) || MX_IS_LNK(tmp->t_st.st_mode)) {
             if ((dtr = opendir(tmp->fullpath)) != NULL) {
                 while ((ds = readdir(dtr)) != NULL)
-                    if (ds->d_name[0] != '.') {
+                    if (check_aa(ds->d_name, head))
                         count++;
-                    }
                     closedir(dtr);
             }
             else {
@@ -64,12 +77,12 @@ void mx_opendir(t_lit **new_d, t_head *head) {
 
     for (int i = 0; new_d[i] != NULL; i++) { // open -> make array
         if (new_d[i] != 0) {
-            count_dir = count_inside_dir(&(new_d[i])); // head for check flag A);
+            count_dir = count_inside_dir(&(new_d[i]), head); // head for check flag A);
             if (count_dir > 0) {
                 new_d[i]->open = malloc((count_dir + 1) * sizeof(t_lit *));
                 if ((dtr = opendir(new_d[i]->fullpath)) != NULL) {
                     for (count_dir = 0; (ds = readdir(dtr)) != NULL ; ) {
-                        if (ds->d_name[0] != '.')
+                        if (check_aa(ds->d_name, head))
                             new_d[i]->open[count_dir++] = createnode(ds->d_name, new_d[i]->fullpath);
                         new_d[i]->open[count_dir] = NULL;
                     }

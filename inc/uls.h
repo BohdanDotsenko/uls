@@ -29,7 +29,7 @@
 #define MX_IS_REG(mode) (((mode) & S_IFMT) == S_IFREG)
 #define MX_IS_EXEC(mode) ((mode) & S_IXUSR)
 
-#define MY_FLAGS "LARarlstucSClm1T" //our flags
+#define MY_FLAGS "LARarlstcSClm1T" //our flags
 #define LS_COLOR_RED        "\x1b[31m"
 #define LS_COLOR_RESET      "\x1b[0m"
 

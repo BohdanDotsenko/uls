@@ -30,10 +30,7 @@ void mx_print_tab(int len, int maxlen) {
 }
 
 static void printcols(t_lit **new_d, int rows, int num, int maxlen) {
-    int count = 0;
-
     for (int i = 0; i < rows; i++) {
-        mx_printint(rows);
         for (int j = 0; i + j < num; j += rows) {
             mx_printstr(new_d[i + j]->name);
             if (new_d[i + j + 1] && (i + j + rows < num))
@@ -41,7 +38,6 @@ static void printcols(t_lit **new_d, int rows, int num, int maxlen) {
         }
         if (i != rows - 1)
             mx_printchar('\n');
-            mx_printint(count++);
     }
 }
 
