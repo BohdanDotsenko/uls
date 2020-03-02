@@ -102,7 +102,7 @@ void mx_print_symb(t_lit *name);
 void mx_printstr_g(t_lit *args);
 void mx_sort(t_lit **new_d, t_head *head);
 void mx_one(t_lit **new_d);
-void mx_multi(t_lit **names);
+void mx_multi(t_lit **new_d);
 void mx_out_m(t_lit **new_d);
 
 
