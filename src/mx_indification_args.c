@@ -9,7 +9,8 @@ void mx_add_new_dir_array(t_lit **args, t_lit **new_d) {
             new_d[count_new_arg] = (t_lit *)malloc(sizeof(t_lit));
             new_d[count_new_arg]->name = mx_strdup(args[i]->name);
             new_d[count_new_arg]->fullpath = mx_strdup(args[i]->fullpath);
-            new_d[count_new_arg]->open = NULL; //new
+            new_d[count_new_arg]->open = NULL;
+            new_d[count_new_arg]->error = NULL;
             count_new_arg++;
         }
     }
@@ -25,6 +26,8 @@ void mx_add_new_file_array(t_lit **args, t_lit **new_f) {
             new_f[count_new_arg] = (t_lit *)malloc(sizeof(t_lit));
             new_f[count_new_arg]->name = mx_strdup(args[i]->name);
             new_f[count_new_arg]->fullpath = mx_strdup(args[i]->fullpath);
+            new_f[count_new_arg]->open = NULL;
+            new_f[count_new_arg]->error = NULL;
             count_new_arg++;
         }
     }
@@ -61,6 +64,8 @@ void mx_indification_args(t_lit **args, t_head *head) {
     head->sum_dir = mx_check_dir(&args);
     head->sum_file = mx_check_file(&args);
 
+    if ((head->sum_dir > 0 && head->sum_file > 0)  || head->sum_dir > 1) // для вывода путей папок. если > 1, печатать имья 
+        head->output = 1;
     if (head->sum_file) {
         new_f = (t_lit **)malloc((head->sum_file + 1) * sizeof(t_lit *));
         mx_add_new_file_array(args, new_f);// we need see whats flag we have ----> use this flag ----> print
@@ -69,30 +74,17 @@ void mx_indification_args(t_lit **args, t_head *head) {
         new_d = (t_lit **)malloc((head->sum_dir + 1) * sizeof(t_lit *)); // i need free new_ar[full] == NULL/
         mx_add_new_dir_array(args, new_d);
     }
-
     // if (we have 1 argument --> uls && new_f) {
     //     //print_multi_colon // Bodya create this function
-    //     return;  
+    //     return;
     // }
-    // if (args[1]->t_st.st_ino != 0) mx_printstr("!!!!!!!!!!!!!!!!!\n");
-   mx_logic(new_d, head);
+    if (new_d)
+       mx_opendir(new_d, head);//in processing
+    mx_del(&args);
 
 
+if (head || head->sum_file) {
 
-// for (int i = 0; new_f[i] != NULL; i++) {
-//         mx_printstr(new_f[i]->name);
-//         mx_printstr("FILE \n");
-//     }
-    // for (int i = 0; new_d[i] != NULL; i++) {
-    //     mx_printstr(new_d[i]->name);
-    //     mx_printstr("DIR \n");
-    // }
+}
 
-// for (int i = 0; args[i] != 0; i++) {
-//     mx_printstr(args[i]->name);
-//     mx_printstr("\n");
-
-// }
-
-// mx_printint(head->count_flags);
  }

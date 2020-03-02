@@ -37,7 +37,6 @@ void mx_parse(int argc, char **argv, t_head *head) {
     args = arg(args); // array without errors
 
     mx_indification_args(args, head);// indification argc (exemple: file and dir)
-
 //  system("leaks uls");
 
 

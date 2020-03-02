@@ -8,27 +8,9 @@ void mx_del_litarr(t_lit ***args, t_lit **dir) {
         mx_strdel(&kill_arr[i]->fullpath);
         if (kill_arr[i]->error != NULL)
             mx_strdel(&kill_arr[i]->error);
-            free(kill_arr[i]);
-            kill_arr[i] = NULL;
+        free(kill_arr[i]);
+        kill_arr[i] = NULL;
         }
         free(*args);
         *args = dir;
-
 }
-
-// t_lit **ss = NULL;
-
-// &(ss);
-
-// mx_ kljdks{
-
-//     &((*ss)[i]) 
-//     free(*ss)
-
-
-//     free((*ss)[i])
-//     while(**ss)
-//         free(**ss++);
-//     free(*ss)
-
-// }

@@ -14,7 +14,7 @@ static t_lit *create_file_node(t_lit *arg) {
     else
         node->open = NULL;
     return node;
-    
+
 }
 
 static void create_fd(t_lit ***dirs, t_lit ***args) {

@@ -244,7 +244,7 @@ OBJO = ./obj/mx_binary_search.o \
 	./obj/mx_strncmp.o\
 
 CFLGS = -std=c11 -Wall -Wextra -Wpedantic -Werror -g
-all: install uninstall
+all: install clean
 
 install:
 	@cp $(INC) $(SRCS) .
@@ -253,11 +253,11 @@ install:
 	@mv $(OBJ) ./obj
 	@ar -rc $(NAME) $(OBJO)
 
-uninstall:
+clean:
 	@rm -rf $(OBJO) $(SRC) $(HEADTMP)
 	@rm -rf ./obj
 
-clean: uninstall
+uninstall: clean
 	@rm -rf $(NAME)
 
 reinstall: clean all
