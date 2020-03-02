@@ -1,11 +1,11 @@
 #include "uls.h"
 
-int max_len_names(t_lit **names) {
+int max_len_new_d(t_lit **new_d) {
     int max = 0;
     int temp = 0;
 
-    for (int i = 0; names[i]; i++) {
-        temp = mx_strlen(names[i]->name);
+    for (int i = 0; new_d[i]; i++) {
+        temp = mx_strlen(new_d[i]->name);
         if (temp > max)
             max = temp;
     }
@@ -29,24 +29,28 @@ void mx_print_tab(int len, int maxlen) {
         mx_printchar('\t');
 }
 
-static void printcols(t_lit **names, int rows, int num, int maxlen) {
+static void printcols(t_lit **new_d, int rows, int num, int maxlen) {
+    int count = 0;
+
     for (int i = 0; i < rows; i++) {
+        mx_printint(rows);
         for (int j = 0; i + j < num; j += rows) {
-            mx_printstr(names[i + j]->name);
-            if (names[i + j + 1] && (i + j + rows < num))
-                mx_print_tab(mx_strlen(names[j + i]->name), maxlen);
+            mx_printstr(new_d[i + j]->name);
+            if (new_d[i + j + 1] && (i + j + rows < num))
+                mx_print_tab(mx_strlen(new_d[i + j]->name), maxlen);
         }
         if (i != rows - 1)
             mx_printchar('\n');
+            mx_printint(count++);
     }
 }
 
-static void print_names(t_lit **names, int maxlen, int wincol) {
+static void print_new_d(t_lit **new_d, int maxlen, int wincol) {
     int rows;
     int cols = (wincol / maxlen) != 0 ? wincol / maxlen : 1;
     int num = 0;
 
-    for(;names[num] != NULL; num++) {
+    for(;new_d[num]; num++) {
     }
     if (maxlen * cols > wincol && cols != 1)
         cols--;
@@ -54,29 +58,27 @@ static void print_names(t_lit **names, int maxlen, int wincol) {
         rows = num / cols;
         if (rows == 0 || num % cols != 0)
             rows += 1;
-        printcols(names, rows, num, maxlen);
+        printcols(new_d, rows, num, maxlen);
     } else
-            for (int j = 0; names[j] != NULL; j++) {
-                mx_printstr(names[j]->name);
-
-            if (names[j + 1] != NULL) {
-                mx_print_tab(mx_strlen(names[j + 1]->name), maxlen);
-
-                }
-            }
+        for (int i = 0; new_d[i]; i++) {
+            mx_printstr(new_d[i]->name);
+            if (new_d[i + 1]) 
+                mx_print_tab(mx_strlen(new_d[i]->name), maxlen);
+        }
         mx_printchar('\n');
 }
 
-void mx_multi(t_lit **names) {
+void mx_multi(t_lit **new_d) {
     int maxlen;
     struct winsize win;
 
-    if (!names)
+    if (!new_d)
         return;
-    maxlen = max_len_names(names);
+    maxlen = max_len_new_d(new_d);
     ioctl(STDOUT_FILENO, TIOCGWINSZ, &win);
     if (isatty(1))
-        print_names(names, maxlen, win.ws_col);
+        print_new_d(new_d, maxlen, win.ws_col);
     else
-        print_names(names, maxlen, 80);
+        print_new_d(new_d, maxlen, 80);
 }
+
