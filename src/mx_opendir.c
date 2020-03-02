@@ -78,7 +78,6 @@ void mx_opendir(t_lit **new_d, t_head *head) {
         }
     }
     if (*new_d != NULL)
-        mx_sort(new_d, head);
     mx_output(new_d, head); // head for check flags/  new /// Бодя коментируй чтобы скомпилить
 
     // out_put (new_d)//
