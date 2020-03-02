@@ -9,6 +9,7 @@ void mx_add_new_dir_array(t_lit **args, t_lit **new_d) {
             new_d[count_new_arg] = (t_lit *)malloc(sizeof(t_lit));
             new_d[count_new_arg]->name = mx_strdup(args[i]->name);
             new_d[count_new_arg]->fullpath = mx_strdup(args[i]->fullpath);
+            new_d[count_new_arg]->t_st = args[i]->t_st;
             new_d[count_new_arg]->open = NULL;
             new_d[count_new_arg]->error = NULL;
             count_new_arg++;
@@ -26,6 +27,7 @@ void mx_add_new_file_array(t_lit **args, t_lit **new_f) {
             new_f[count_new_arg] = (t_lit *)malloc(sizeof(t_lit));
             new_f[count_new_arg]->name = mx_strdup(args[i]->name);
             new_f[count_new_arg]->fullpath = mx_strdup(args[i]->fullpath);
+            new_f[count_new_arg]->t_st = args[i]->t_st;
             new_f[count_new_arg]->open = NULL;
             new_f[count_new_arg]->error = NULL;
             count_new_arg++;
@@ -74,17 +76,12 @@ void mx_indification_args(t_lit **args, t_head *head) {
         new_d = (t_lit **)malloc((head->sum_dir + 1) * sizeof(t_lit *)); // i need free new_ar[full] == NULL/
         mx_add_new_dir_array(args, new_d);
     }
-    // if (we have 1 argument --> uls && new_f) {
-    //     //print_multi_colon // Bodya create this function
-    //     return;
-    // }
-    if (new_d)
-       mx_opendir(new_d, head);//in processing
-    mx_del(&args);
-
-
-if (head || head->sum_file) {
-
+    if (new_f) {
+        mx_out_menu(new_f, head, 0);
+        mx_del(&new_f);
+    }
+    if (new_d) {
+       mx_opendir(new_d, head);
+       free(new_d);
+    }
 }
-
- }

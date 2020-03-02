@@ -66,7 +66,4 @@ void mx_long_out(t_lit **name, t_head *head, int fg) {
         mx_print(name[i], size, head);
     free(size);
 
-    if (name || head || fg) {
-
-    }
 }

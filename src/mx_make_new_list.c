@@ -1,15 +1,19 @@
 #include "uls.h"
 
-void mx_del_list(t_lit **args) {
-    for (int i = 0; args[i] != NULL; i++) {
-        free(args[i]->name);
-        free(args[i]->fullpath);
-        if (args[i]->error) {
-            free(args[i]->error);
-        }
-        free(args[i]);
-        args[i] = NULL;
+void mx_del_list(t_lit ***args) {
+    for (int i = 0; (*args)[i] != NULL; i++) {
+        free((*args)[i]->name);
+        free((*args)[i]->fullpath);
+        if ((*args)[i]->error)
+            free((*args)[i]->error);
+        (*args)[i]->name = NULL;
+        (*args)[i]->fullpath = NULL;
+        (*args)[i]->error = NULL;
+        free((*args)[i]);
+        (*args)[i] = NULL;
     }
+    free(*args);
+    *args = NULL;
 }
 
 t_lit **mx_make_new_list(t_lit **args, int valid_node) {
@@ -28,6 +32,6 @@ t_lit **mx_make_new_list(t_lit **args, int valid_node) {
         }
     }
     newstruct[count_new_lst] = NULL;
-    mx_del_list(args);
+    mx_del_list(&args);
     return newstruct;
 }

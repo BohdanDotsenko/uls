@@ -3,17 +3,18 @@
 void mx_del(t_lit ***args) {
     t_lit **kill_arr = *args;
 
-    for (int i = 0; kill_arr[i] != NULL; i++) {
-        mx_strdel(&kill_arr[i]->name);
-        mx_strdel(&kill_arr[i]->fullpath);
-        if (kill_arr[i]->error != NULL)
-            mx_strdel(&kill_arr[i]->error);
-            if (kill_arr[i])
-                free(kill_arr[i]);
+    if (kill_arr) {
+        for (int i = 0; kill_arr[i] != NULL; i++) {
+            mx_strdel(&kill_arr[i]->name);
+            mx_strdel(&kill_arr[i]->fullpath);
+            if (kill_arr[i]->error)
+                mx_strdel(&kill_arr[i]->error);
+            free(kill_arr[i]);
             kill_arr[i] = NULL;
         }
         free(*args);
         *args = NULL;
+    }
 }
 
 static int count_inside_dir(t_lit **new_d) {
@@ -78,41 +79,6 @@ void mx_opendir(t_lit **new_d, t_head *head) {
         }
     }
     if (*new_d != NULL)
-    mx_output(new_d, head); // head for check flags/  new /// Бодя коментируй чтобы скомпилить
-
-    // out_put (new_d)//
-    // printdirname()//
-    // outputmenu(open)//
-    // if R -> opendir (delfiles(open))
-        // int x = 0;
-    // int r = 1;
-
-    // for (int x = 0; new_d[x] != NULL; x++) {
-    //     // if (head->output == 1) {
-    //     //     mx_printstr(new_d[x]->fullpath);
-    //     //     mx_printstr(":\n");
-    //     // }
-    //     if (new_d[x]->error) {
-    //         mx_printerr("uls: ");
-    //         char *str = mx_memrchr(new_d[x]->name, '/', mx_strlen(new_d[x]->name));
-    //         mx_printerr(str + 1);
-    //         mx_printerr(": ");
-    //         mx_printerr(new_d[x]->error);
-    //         mx_printerr("\n");
-    //     }
-    //     if (new_d[x]->open != NULL) { // for output files
-    //         for (int j = 0; new_d[x]->open[j] != NULL; j++) {
-    //             mx_printstr(new_d[x]->open[j]->name);
-    //             mx_printstr("\n");
-    //         }
-    //         mx_printstr("\n");
-    //         if (r) {
-    //             head->output = 1;
-    //                 mx_del_fils(&new_d[x]->open, head);
-    //                 if (new_d[x]->open != NULL)
-    //                     mx_opendir(new_d[x]->open, head);
-    //             }
-    //     }
-    // }
+    mx_output(new_d, head); 
 }
 

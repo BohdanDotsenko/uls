@@ -50,6 +50,7 @@ typedef struct s_lit {
     int count_flags;
     int sum_dir;
     int sum_file; // for print!! have or not file//
+    int sum_err; // NEWW
     int output;
     int ex; // when you have error (ex: permission and ect)  you need exit your program with number errors. example: exit(ex)
  } t_head;
@@ -69,7 +70,7 @@ t_lit **mx_getname(int argc, char **argv, int i);
 void mx_parse(int argc, char **argv, t_head *head);
 void mx_sort_asci(t_lit ***arg);
 t_lit **mx_make_new_list(t_lit **args, int valid_node);
-void mx_del_list(t_lit **args);
+void mx_del_list(t_lit ***args);
 void mx_indification_args(t_lit **args, t_head *head);
 int mx_check_dir(t_lit ***args);
 int mx_check_file(t_lit ***args);
