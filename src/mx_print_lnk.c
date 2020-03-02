@@ -10,7 +10,7 @@ void mx_print_lnk(t_lit *name, t_sz *size) {
     }
     else if (mx_strlen(res_now) < mx_strlen(res_lnk)) {
         counter = mx_strlen(res_now);
-        while (counter != mx_strlen(res_now)) {
+        while (counter != mx_strlen(res_lnk)) {
             mx_printchar(' ');
             counter++;
         }
