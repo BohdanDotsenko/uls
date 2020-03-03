@@ -1,7 +1,6 @@
 #include "uls.h"
 
 static void illegal_option(char c) {
-    
     mx_printerr("uls: illegal option -- ");
     write(2, &c, 1);
     mx_printerr("\nusage: uls [-");

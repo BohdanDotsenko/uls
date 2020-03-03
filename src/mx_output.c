@@ -57,6 +57,8 @@ void mx_output(t_lit **new_d, t_head *head) {
                 mx_printchar('\n');
             }
             all_output(&new_d[i], head);
+            if (new_d[i]->error != NULL)
+                head->ex = head->ex + 1;//new
             if (new_d[i + 1])
                 mx_printchar('\n');
         }
