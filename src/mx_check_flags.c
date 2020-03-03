@@ -10,9 +10,15 @@ static void illegal_option(char c) {
     exit(1);
 }
 
+static void parse_sorts(char c, t_head *head) {
+    char *sorts = "rtucS";
+        if (mx_get_char_index(sorts, c) != -1 
+            && head->flags[mx_get_char_index(MY_FLAGS, 'S')] != 1)
+    head->flags[mx_get_char_index(MY_FLAGS, c)] = 1;
+}
+
 static void parse_type_output(char c, t_head *head) {
     char *out = "l1mC";
-    char *sorts = "rtucS";
 
     if (mx_get_char_index(out, c) != -1) {
         if (c == 'C' && head->flags[mx_get_char_index(MY_FLAGS, 'm')] == 1) {
@@ -26,10 +32,11 @@ static void parse_type_output(char c, t_head *head) {
             head->flags[mx_get_char_index(MY_FLAGS, c)] = 1;
         }
     }
+    if (c == 'T')
+        head->flags[mx_get_char_index(MY_FLAGS, 'T')] = 1;
     if (c == 'R' || c == 'a' || c == 'A')
         head->flags[mx_get_char_index(MY_FLAGS, c)] = 1;
-    if (mx_get_char_index(sorts, c) != -1)
-        head->flags[mx_get_char_index(MY_FLAGS, c)] = 1;
+    parse_sorts(c, head);
 }
 
 static void if_isatty(t_head *head) {
