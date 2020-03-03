@@ -51,7 +51,7 @@ static void ind_args2(t_lit **args, t_head *head,
         mx_out_menu(new_f, head, 0);
         mx_del(&new_f);
     }
-    if (new_d) {
+    if (new_d != NULL) {
        mx_opendir(new_d, head);
        free(new_d);
     }
@@ -60,7 +60,7 @@ static void ind_args2(t_lit **args, t_head *head,
 void mx_indification_args(t_lit **args, t_head *head) {
     t_lit **new_f = NULL;
     t_lit **new_d = NULL;
-
+    
     head->sum_dir = mx_check_dir(&args);
     head->sum_file = mx_check_file(&args);
     ind_args2(args, head, new_f, new_d);

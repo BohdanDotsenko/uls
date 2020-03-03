@@ -53,20 +53,24 @@ static t_lit *createnode(char *name, char *path) {
     return node;
 }
 
+static void mx_opendir2(t_lit **new_d, t_head *head) {
+   if (*new_d)
+        mx_output(new_d, head); 
+}
+
 void mx_opendir(t_lit **new_d, t_head *head) {
     DIR *dtr;
     struct dirent *ds;
-    int sum = 0;
 
-    for (int i = 0; new_d[i] != NULL; i++) { // open -> make array
-        if (new_d[i] != 0) {
-            sum = count_inside_dir(&(new_d[i]), head); // head for check flag A);
+    for (int i = 0, sum = 0 ; new_d[i] != NULL; i++) {
+        if (new_d[i] != 0 && (sum = count_inside_dir(&(new_d[i]), head))) {
             if (sum > 0) {
                 new_d[i]->open = malloc((sum + 1) * sizeof(t_lit *));
                 if ((dtr = opendir(new_d[i]->fullpath)) != NULL) {
                     for (sum = 0; (ds = readdir(dtr)) != NULL ; ) {
                         if (check_aa(ds->d_name, head))
-                            new_d[i]->open[sum++] = createnode(ds->d_name, new_d[i]->fullpath);
+                            new_d[i]->open[sum++] = 
+                            createnode(ds->d_name, new_d[i]->fullpath);
                         new_d[i]->open[sum] = NULL;
                     }
                 closedir(dtr);
@@ -74,7 +78,6 @@ void mx_opendir(t_lit **new_d, t_head *head) {
             }
         }
     }
-    if (*new_d)
-    mx_output(new_d, head); 
+    mx_opendir2(new_d, head);
 }
 
