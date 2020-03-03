@@ -26,15 +26,15 @@ static void all_output(t_lit **new_d, t_head *head) {
 }
 
 static void del_data(t_lit **new_d, t_head *head) {
-    if (!new_d[0]->open)
-        return;
-    for(int i = 0; new_d[i] != NULL && new_d[i]; i++) {
+    for(int i = 0; new_d[i] != NULL; i++) {
         if (head->flags[mx_get_char_index(MY_FLAGS, 'R')] == 0) {
-            for(int j = 0; new_d[i]->open[j] != NULL; j++) {
-                free(new_d[i]->open[j]->name);
-                free(new_d[i]->open[j]->fullpath);
-                free(new_d[i]->open[j]->error);
-                free(new_d[i]->open[j]);
+            if (new_d[i]->open) {
+                for(int j = 0; new_d[i]->open[j] != NULL; j++) {
+                    free(new_d[i]->open[j]->name);
+                    free(new_d[i]->open[j]->fullpath);
+                    free(new_d[i]->open[j]->error);
+                    free(new_d[i]->open[j]);
+                }
             }
         }
         free(new_d[i]->name);
