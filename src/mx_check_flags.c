@@ -15,11 +15,16 @@ static void parse_type_output(char c, t_head *head) {
     char *sorts = "rtucS";
 
     if (mx_get_char_index(out, c) != -1) {
-        head->flags[mx_get_char_index(MY_FLAGS, 'l')] = 0;
-        head->flags[mx_get_char_index(MY_FLAGS, 'm')] = 0;
-        head->flags[mx_get_char_index(MY_FLAGS, 'C')] = 0;
-        head->flags[mx_get_char_index(MY_FLAGS, '1')] = 0;
-        head->flags[mx_get_char_index(MY_FLAGS, c)] = 1;
+        if (c == 'C' && head->flags[mx_get_char_index(MY_FLAGS, 'm')] == 1) {
+            
+        }
+        else {
+            head->flags[mx_get_char_index(MY_FLAGS, 'l')] = 0;
+            head->flags[mx_get_char_index(MY_FLAGS, 'm')] = 0;
+            head->flags[mx_get_char_index(MY_FLAGS, 'C')] = 0;
+            head->flags[mx_get_char_index(MY_FLAGS, '1')] = 0;
+            head->flags[mx_get_char_index(MY_FLAGS, c)] = 1;
+        }
     }
     if (c == 'R' || c == 'a' || c == 'A')
         head->flags[mx_get_char_index(MY_FLAGS, c)] = 1;
