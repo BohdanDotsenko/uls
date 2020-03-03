@@ -9,10 +9,10 @@
             "name": "(lldb) Запустить",
             "type": "cppdbg",
             "request": "launch",
-            "program": "/Users/bdotsenko/Desktop/03.03/uls/uls",
-            "args": ["empty"],
+            "program": "/Users/mdannyk/Desktop/ULS/uls",
+            "args": ["-l", "/dev"],
             "stopAtEntry": true,
-            "cwd": "/Users/bdotsenko/Desktop/03.03/uls",
+            "cwd": "/Users/mdannyk/Desktop/ULS",
             "environment": [],
             "externalConsole": true,
             "MIMode": "lldb"
