@@ -14,10 +14,8 @@ char *mx_get_minor(t_lit *name) {
 
     if (minor_num > 255)
         minor = minor_to_hex(mx_nbr_to_hex(minor_num));
-    else {
+    else
         minor = mx_itoa(minor_num);
-        mx_printstr(minor);
-    }
     return minor;
 }
 

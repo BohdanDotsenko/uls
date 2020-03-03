@@ -10,7 +10,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "/Users/mdannyk/Desktop/ULS/uls",
-            "args": ["-l", "/dev"],
+            "args": ["-lc"],
             "stopAtEntry": true,
             "cwd": "/Users/mdannyk/Desktop/ULS",
             "environment": [],
