@@ -3,7 +3,6 @@ void mx_add_new_dir_array(t_lit **args, t_lit **new_d) {
     int count_new_arg = 0;
 
     new_d[count_new_arg] = NULL;
-
     for (int i = 0; args[i] != NULL; i++) {
         if (args[i]->what_is_it == 2) {
             new_d[count_new_arg] = (t_lit *)malloc(sizeof(t_lit));
@@ -36,30 +35,6 @@ void mx_add_new_file_array(t_lit **args, t_lit **new_f) {
     new_f[count_new_arg] = NULL;
 }
 
-int mx_check_file(t_lit ***args) {
-    int sum_file = 0;
-    t_lit **arg = *args;
-
-    for (int i = 0; arg[i] != NULL; i++)
-        if (!MX_IS_DIR(arg[i]->t_st.st_mode)) {
-            arg[i]->what_is_it = 1;
-            sum_file++;
-        }
-    return sum_file;
-}
-
-int mx_check_dir(t_lit ***args) {
-    int sum_dir = 0;
-    t_lit **arg = *args;
-
-    for (int i = 0; arg[i] != NULL; i++)
-        if (MX_IS_DIR(arg[i]->t_st.st_mode)) {
-            arg[i]->what_is_it = 2;
-            sum_dir++;
-        }
-    return sum_dir;
-}
-
 static void ind_args2(t_lit **args, t_head *head, 
                       t_lit **new_f, t_lit **new_d) {
     if ((head->sum_dir > 0 && head->sum_file > 0)  || head->sum_dir > 1)
@@ -85,8 +60,8 @@ static void ind_args2(t_lit **args, t_head *head,
 void mx_indification_args(t_lit **args, t_head *head) {
     t_lit **new_f = NULL;
     t_lit **new_d = NULL;
+
     head->sum_dir = mx_check_dir(&args);
     head->sum_file = mx_check_file(&args);
-
     ind_args2(args, head, new_f, new_d);
 }

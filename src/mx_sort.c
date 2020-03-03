@@ -51,7 +51,6 @@ static bool what_sort(t_head *head, t_lit **new_d, int i, int j) {
 }
 
 void mx_sort(t_lit **new_d,t_head *head) {
-
     for (int i = 0; new_d[i] != NULL; i++) {
         for( int j = i + 1; new_d[j] != NULL; j++) {
             if (what_sort(head, new_d, i, j)) {

@@ -18,7 +18,7 @@ static void print_names(t_lit **new_d, int wincol) {
                 nextlen = 3;
             else
                 nextlen = 1;
-            if (len + nextlen + mx_strlen(new_d[i + 1]->name) 
+            if (len + nextlen + mx_strlen(new_d[i + 1]->name)
                 > wincol)
                 printn(&len);
         }

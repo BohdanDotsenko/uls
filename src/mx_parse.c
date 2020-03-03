@@ -19,7 +19,7 @@ static t_lit** arg(t_lit **args) {
 static void print_err(t_lit **arg, t_head *head) {
     for (int i = 0; arg[i] != NULL; i++) {
         if (arg[i]->error) {
-            head->sum_err = head->sum_err + 1;//////NEW
+            head->sum_err = head->sum_err + 1;//NEW
             mx_printerr("uls: ");
             mx_printerr(arg[i]->name);
             mx_printerr(": ");

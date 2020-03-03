@@ -82,6 +82,7 @@ void mx_add_new_file_array(t_lit **args, t_lit **new_f);
 t_lit** mx_arg(t_lit **args);
 void mx_del_fils(t_lit ***args, t_head *head);
 void mx_del_litarr(t_lit ***args, t_lit **dir);
+int mx_check_file(t_lit ***args);
 
 void mx_output(t_lit **new_d, t_head *head);
 void mx_del(t_lit ***args);
