@@ -5,7 +5,7 @@ static void printstr(const char *s) {
 }
 
 static void print_name(t_lit *args) {
-    mx_printstr(args->name);
+    mx_new_pstr(args->name);
     printstr(LS_COLOR_RESET);
 }
 

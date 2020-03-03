@@ -10,10 +10,10 @@ static void print_names(t_lit **new_d, int wincol) {
     int nextlen = 0;
 
     for (int i = 0; new_d[i] != NULL; i++) {
-            mx_printstr(new_d[i]->name);
+            mx_new_pstr(new_d[i]->name);
         len += mx_strlen(new_d[i]->name) + 2;
         if (new_d[i + 1]) {
-            mx_printstr(", ");
+            mx_new_pstr(", ");
             if (new_d[i + 2])
                 nextlen = 3;
             else
