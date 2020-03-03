@@ -26,9 +26,11 @@ static void all_output(t_lit **new_d, t_head *head) {
 }
 
 static void del_data(t_lit **new_d, t_head *head) {
-    for(int i = 0; new_d[i]; i++) {
+    if (!new_d[0]->open)
+        return;
+    for(int i = 0; new_d[i] != NULL && new_d[i]; i++) {
         if (head->flags[mx_get_char_index(MY_FLAGS, 'R')] == 0) {
-            for(int j = 0; new_d[i]->open[j]; j++) {
+            for(int j = 0; new_d[i]->open[j] != NULL; j++) {
                 free(new_d[i]->open[j]->name);
                 free(new_d[i]->open[j]->fullpath);
                 free(new_d[i]->open[j]->error);
@@ -59,5 +61,6 @@ void mx_output(t_lit **new_d, t_head *head) {
                 mx_printchar('\n');
         }
     }
-    del_data(new_d, head);
+    if (new_d)
+        del_data(new_d, head);
 }

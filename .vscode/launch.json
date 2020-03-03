@@ -4,14 +4,15 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+    
         {
             "name": "(lldb) Запустить",
             "type": "cppdbg",
             "request": "launch",
-            "program": "/Users/mdannyk/Desktop/BodyaULS/uls",
-            "args": ["zz"],
+            "program": "/Users/bdotsenko/Desktop/03.03/uls/uls",
+            "args": ["empty"],
             "stopAtEntry": true,
-            "cwd": "/Users/mdannyk/Desktop/BodyaULS",
+            "cwd": "/Users/bdotsenko/Desktop/03.03/uls",
             "environment": [],
             "externalConsole": true,
             "MIMode": "lldb"
