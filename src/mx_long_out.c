@@ -33,7 +33,7 @@ static char *check_grp(t_lit *total) {
 static void count_size(t_sz *size, t_lit *total) {
     char *name_grp = check_grp(total);
     char *name_pw = check_pw(total);
-    
+
     if (size->lnk < total->t_st.st_nlink)
         size->lnk = total->t_st.st_nlink;
     if (size->sz < total->t_st.st_size)
@@ -65,5 +65,4 @@ void mx_long_out(t_lit **name, t_head *head, int fg) {
     for (i = 0; name[i]; i++)
         mx_print(name[i], size, head);
     free(size);
-
 }

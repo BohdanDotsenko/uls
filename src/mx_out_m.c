@@ -28,7 +28,7 @@ static void print_names(t_lit **new_d, int wincol) {
 
 void mx_out_m(t_lit **new_d) {
     struct winsize win;
-    
+
     if (!new_d)
         return;
     ioctl(STDOUT_FILENO, TIOCGWINSZ, &win);

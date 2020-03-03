@@ -20,8 +20,4 @@ void mx_edit_time(t_lit *name, char *t, t_head *head) {
                 mx_printchar(t[i]);
     }
     mx_printstr(" ");
-
-    if (head) {
-
-    }
 }

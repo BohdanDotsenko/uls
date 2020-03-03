@@ -19,7 +19,7 @@ static t_lit *create_file_node(t_lit *arg) {
 
 static void create_fd(t_lit ***dirs, t_lit ***args) {
     int sum_dir = 0;
-    
+
     for (int i = 0; (*args)[i] != NULL; i++)
         if ((*args)[i]->error == NULL)
             if (MX_IS_DIR((*args)[i]->t_st.st_mode) &&
@@ -34,7 +34,7 @@ static void create_fd(t_lit ***dirs, t_lit ***args) {
 void mx_del_fils(t_lit ***args, t_head *head) {
     t_lit **dirs = NULL;
     int sum_dir = 0;
-    
+
     create_fd(&dirs, args);
     for (int i = 0; (*args)[i] != NULL; i++) {
         if ((*args)[i]->error == NULL) {

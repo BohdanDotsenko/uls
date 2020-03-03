@@ -7,4 +7,3 @@ t_list *mx_create_node(void *data) {
 	Node->next = NULL;
 	return Node;	
 }
-

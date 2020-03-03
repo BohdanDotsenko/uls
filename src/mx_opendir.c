@@ -80,4 +80,3 @@ void mx_opendir(t_lit **new_d, t_head *head) {
     }
     opendir2(new_d, head);
 }
-

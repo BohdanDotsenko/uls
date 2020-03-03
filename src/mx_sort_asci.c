@@ -9,7 +9,7 @@ static void swapnode(t_lit **st1, t_lit **st2) {
 
 static int sizearr(t_lit **arg) {
     int i = 0;
-    
+
     while (arg[i])
         i++;
     return i;
@@ -26,5 +26,4 @@ void mx_sort_asci(t_lit ***arg) {
         }
     }
     **arg = *args;
-    
 }
