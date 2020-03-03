@@ -67,10 +67,10 @@ void mx_opendir(t_lit **new_d, t_head *head) {
             if (sum > 0) {
                 new_d[i]->open = malloc((sum + 1) * sizeof(t_lit *));
                 if ((dtr = opendir(new_d[i]->fullpath)) != NULL) {
-                    for (sum = 0; (ds = readdir(dtr)) != NULL ; ) {
+                    for (sum = 0; (ds = readdir(dtr)) != NULL; ) {
                         if (check_aa(ds->d_name, head))
-                            new_d[i]->open[sum++] = 
-                            createnode(ds->d_name, new_d[i]->fullpath);
+                            new_d[i]->open[sum++]
+                            = createnode(ds->d_name, new_d[i]->fullpath);
                         new_d[i]->open[sum] = NULL;
                     }
                 closedir(dtr);

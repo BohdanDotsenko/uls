@@ -37,9 +37,8 @@ static char **nam(int argc, char **argv, int i, int *count) {
         for (; argv[j]; j++) {
         }
         nam = malloc((j - i + 1) * sizeof(char *));
-        for (j = 0; argv[i]; i++, j++) {
+        for (j = 0; argv[i]; i++, j++)
             nam[j] = mx_strdup(argv[i]);
-        }
         nam[j] = NULL;
         *count = j + 1;
     }

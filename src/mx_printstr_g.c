@@ -1,7 +1,7 @@
 #include "uls.h"
 
 static void printstr(const char *s) {
-	write(1, s, mx_strlen(s));
+    write(1, s, mx_strlen(s));
 }
 
 static void print_name(t_lit *args) {

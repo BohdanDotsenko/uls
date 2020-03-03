@@ -29,31 +29,30 @@
 #define MX_IS_REG(mode) (((mode) & S_IFMT) == S_IFREG)
 #define MX_IS_EXEC(mode) ((mode) & S_IXUSR)
 
-#define MY_FLAGS "ACLRSTalmrst1" //our flags
+#define MY_FLAGS "ACLRSTalmrt1"
 #define LS_COLOR_RED        "\x1b[31m"
 #define LS_COLOR_RESET      "\x1b[0m"
 
-//typedef struct stat t_st;
 struct stat *buf;
 
-typedef struct s_lit {
+typedef struct  s_lit {
     char *name;
     char *fullpath;
-    char *error;// write mistake errno
+    char *error;
     int what_is_it;
     struct stat t_st;
     struct s_lit **open;
-} t_lit;
+}               t_lit;
  
  typedef struct s_head {
     int *flags;
     int count_flags;
     int sum_dir;
-    int sum_file; // for print!! have or not file//
-    int sum_err; // NEWW
+    int sum_file;
+    int sum_err;
     int output;
-    int ex; // when you have error (ex: permission and ect)  you need exit your program with number errors. example: exit(ex)
- } t_head;
+    int ex;
+ }              t_head;
 
 
 typedef struct s_sz {
@@ -62,7 +61,7 @@ typedef struct s_sz {
     int group;
     int usr;
     bool is_dev;
-} t_sz;
+}               t_sz;
 
 
 int mx_check_flags(int argc, char *argv[], t_head *head);
@@ -74,7 +73,7 @@ void mx_del_list(t_lit ***args);
 void mx_indification_args(t_lit **args, t_head *head);
 int mx_check_dir(t_lit ***args);
 int mx_check_file(t_lit ***args);
-t_lit **mx_createlist(char **name, int count); // after open dir we have array ---> new_list ----> and working with him
+t_lit **mx_createlist(char **name, int count);
 void mx_opendir(t_lit **new_d, t_head * head);
 void mx_join(char **res, char *s2);
 void mx_add_new_dir_array(t_lit **args, t_lit **new_d);
@@ -105,7 +104,6 @@ void mx_sort(t_lit **new_d, t_head *head);
 void mx_one(t_lit **new_d);
 void mx_multi(t_lit **new_d);
 void mx_out_m(t_lit **new_d);
-
 
 #endif
 

@@ -11,8 +11,9 @@ static void illegal_option(char c) {
 
 static void parse_sorts(char c, t_head *head) {
     char *sorts = "rtucS";
-        if (mx_get_char_index(sorts, c) != -1 
-            && head->flags[mx_get_char_index(MY_FLAGS, 'S')] != 1)
+
+    if (mx_get_char_index(sorts, c) != -1 
+        && head->flags[mx_get_char_index(MY_FLAGS, 'S')] != 1)
     head->flags[mx_get_char_index(MY_FLAGS, c)] = 1;
 }
 

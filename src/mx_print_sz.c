@@ -48,4 +48,3 @@ void mx_print_sz(t_lit *name, t_sz *size) {
     free(res_now);
     free(res_sz);
 }
-

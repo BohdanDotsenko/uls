@@ -4,17 +4,17 @@ static bool sort_by_time(t_lit **new_d, int i, int j) {
     if (new_d[i]->t_st.st_mtime 
         < new_d[j]->t_st.st_mtime)
     return true;
-    else if (new_d[i]->t_st.st_mtimespec.tv_nsec < 
-             new_d[j]->t_st.st_mtimespec.tv_nsec && 
-             new_d[i]->t_st.st_mtime == 
-             new_d[j]->t_st.st_mtime)
+    else if (new_d[i]->t_st.st_mtimespec.tv_nsec
+             < new_d[j]->t_st.st_mtimespec.tv_nsec
+             && new_d[i]->t_st.st_mtime
+             == new_d[j]->t_st.st_mtime)
         return true;
     else if (mx_strcmp(new_d[j]->name,
-                       new_d[i]->name) < 0 && 
-                       new_d[i]->t_st.st_mtimespec.tv_nsec == 
-                       new_d[j]->t_st.st_mtimespec.tv_nsec &&
-                       new_d[i]->t_st.st_mtime == 
-                       new_d[j]->t_st.st_mtime)
+                       new_d[i]->name) < 0
+             && new_d[i]->t_st.st_mtimespec.tv_nsec
+             == new_d[j]->t_st.st_mtimespec.tv_nsec
+             && new_d[i]->t_st.st_mtime
+             == new_d[j]->t_st.st_mtime)
             return true;
     return false;
 }
@@ -52,7 +52,7 @@ static bool what_sort(t_head *head, t_lit **new_d, int i, int j) {
 
 void mx_sort(t_lit **new_d,t_head *head) {
     for (int i = 0; new_d[i] != NULL; i++) {
-        for( int j = i + 1; new_d[j] != NULL; j++) {
+        for (int j = i + 1; new_d[j] != NULL; j++) {
             if (what_sort(head, new_d, i, j)) {
                 swap_li(&new_d[i], &new_d[j]);
             }
@@ -60,7 +60,7 @@ void mx_sort(t_lit **new_d,t_head *head) {
     }
     if (head->flags[mx_get_char_index(MY_FLAGS, 'r')] == 1) {
         for (int i = 0; new_d[i] != NULL; i++) {
-            for( int j = i + 1; new_d[j] != NULL; j++) {
+            for (int j = i + 1; new_d[j] != NULL; j++) {
                 swap_li(&new_d[i], &new_d[j]);
             }
         }

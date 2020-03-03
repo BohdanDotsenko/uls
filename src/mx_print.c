@@ -9,7 +9,6 @@ static void print_link_and_color(t_lit *name) {
         mx_new_pstr(name->name);
 }
 
-
 void mx_print(t_lit *name, t_sz *size, t_head *head) {
     time_t *chtime = &name->t_st.st_ctime;
     time_t *atime = &name->t_st.st_atime;

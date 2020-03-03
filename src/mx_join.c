@@ -1,4 +1,3 @@
-
 #include "uls.h"
 
 void mx_join(char **res, char *s2) {
@@ -7,12 +6,12 @@ void mx_join(char **res, char *s2) {
     int si = -1;
     char *s1 = *res;
 
-    while(s1[++si]) {
+    while (s1[++si]) {
         newstr[i] = s1[si];
         i++;
     }
     si = -1;
-    while(s2[++si]) {
+    while (s2[++si]) {
         newstr[i] = s2[si];
         i++;
     }

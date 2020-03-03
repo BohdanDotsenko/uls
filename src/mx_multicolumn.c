@@ -46,7 +46,7 @@ static void print_new_d(t_lit **new_d, int maxlen, int wincol) {
     int cols = (wincol / maxlen) != 0 ? wincol / maxlen : 1;
     int num = 0;
 
-    for(;new_d[num]; num++) {
+    for (;new_d[num]; num++) {
     }
     if (maxlen * cols > wincol && cols != 1)
         cols--;
@@ -55,7 +55,8 @@ static void print_new_d(t_lit **new_d, int maxlen, int wincol) {
         if (rows == 0 || num % cols != 0)
             rows += 1;
         printcols(new_d, rows, num, maxlen);
-    } else
+    }
+    else
         for (int i = 0; new_d[i]; i++) {
             mx_new_pstr(new_d[i]->name);
             if (new_d[i + 1]) 
