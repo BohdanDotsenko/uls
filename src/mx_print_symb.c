@@ -10,6 +10,6 @@ void mx_print_symb(t_lit *name) {
     nbytes = readlink(name->fullpath, buf, buf_size);
     mx_printstr(" -> ");
     if (nbytes >= 0)
-        mx_printstr(buf);
+        mx_new_pstr(buf);
     mx_strdel(&buf);
 }

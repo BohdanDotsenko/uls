@@ -2,11 +2,11 @@
 
 static void print_link_and_color(t_lit *name) {
     if (MX_IS_LNK(name->t_st.st_mode)) {
-        mx_printstr(name->name);
+        mx_new_pstr(name->name);
         mx_print_symb(name);
     }
     else
-        mx_printstr(name->name);
+        mx_new_pstr(name->name);
 }
 
 

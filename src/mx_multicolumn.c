@@ -32,7 +32,7 @@ void mx_print_tab(int len, int maxlen) {
 static void printcols(t_lit **new_d, int rows, int num, int maxlen) {
     for (int i = 0; i < rows; i++) {
         for (int j = 0; i + j < num; j += rows) {
-            mx_printstr(new_d[i + j]->name);
+            mx_new_pstr(new_d[i + j]->name);
             if (new_d[i + j + 1] && (i + j + rows < num))
                 mx_print_tab(mx_strlen(new_d[i + j]->name), maxlen);
         }
@@ -57,7 +57,7 @@ static void print_new_d(t_lit **new_d, int maxlen, int wincol) {
         printcols(new_d, rows, num, maxlen);
     } else
         for (int i = 0; new_d[i]; i++) {
-            mx_printstr(new_d[i]->name);
+            mx_new_pstr(new_d[i]->name);
             if (new_d[i + 1]) 
                 mx_print_tab(mx_strlen(new_d[i]->name), maxlen);
         }
