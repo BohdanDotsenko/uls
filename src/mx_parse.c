@@ -25,7 +25,7 @@ static void print_err(t_lit **arg, t_head *head) {
             mx_printerr(": ");
             mx_printerr(arg[i]->error);
             mx_printerr("\n");
-            exit(1);
+            head->ex = head->ex + 1;
         }
     }
 }
