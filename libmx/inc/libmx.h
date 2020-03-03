@@ -14,6 +14,7 @@ bool mx_isspace(int c);
 int mx_intlen(int number);
 int mx_strncmp(const char *s1, const char *s2, size_t n);
 char* mx_strchr(const char *s, int c);
+void mx_new_pstr(const char *s);//new
 // Utils pack
 
 void mx_printchar(char c);

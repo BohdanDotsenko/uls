@@ -4,6 +4,7 @@ INC = ./inc/libmx.h
 HEADTMP = ./libmx.h
 
 SRC = ./mx_binary_search.c \
+	./mx_new_pstr.c \
 	./mx_printerr.c \
 	./mx_swap_str_ptrs.c \
 	./mx_intlen.c \
@@ -64,6 +65,7 @@ SRC = ./mx_binary_search.c \
 	./mx_swap_char.c\
 
 SRCS = ./src/mx_binary_search.c \
+	./src/mx_new_pstr.c \
 	./src/mx_printerr.c \
 	./src/mx_swap_str_ptrs.c \
     ./src/mx_intlen.c \
@@ -124,6 +126,7 @@ SRCS = ./src/mx_binary_search.c \
 	./src/mx_strncmp.c\
 
 OBJ = ./mx_binary_search.o \
+	./mx_new_pstr.o \
 	./mx_printerr.o \
  	./mx_swap_str_ptrs.o \
 	./mx_intlen.o \
@@ -184,6 +187,7 @@ OBJ = ./mx_binary_search.o \
 	./mx_strncmp.o\
 
 OBJO = ./obj/mx_binary_search.o \
+	./obj/mx_new_pstr.o \
 	./obj/mx_printerr.o \
  	./obj/mx_swap_str_ptrs.o \
     ./obj/mx_intlen.o \

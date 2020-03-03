@@ -35,17 +35,8 @@ void mx_parse(int argc, char **argv, t_head *head) {
 
     mx_sort_asci(&args); // sort argument of ASCI
     print_err(args, head); // print error
-
-
-    for (int i = 0; head->flags[i]; i++) {
-        mx_printstr(mx_itoa(head->flags[i]));
-    }
-
     args = arg(args); // array without errors
     mx_indification_args(args, head);
     mx_del_list(&args);
     return;
-    // if (argc || argv || head) {
-
-    // }
 }
