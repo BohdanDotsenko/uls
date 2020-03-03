@@ -50,10 +50,12 @@ static void ind_args2(t_lit **args, t_head *head,
     if (new_f) {
         mx_out_menu(new_f, head, 0);
         mx_del(&new_f);
+        if (head->sum_dir)
+            mx_printchar('\n');
     }
     if (new_d != NULL) {
-       mx_opendir(new_d, head);
-       free(new_d);
+        mx_opendir(new_d, head);
+        free(new_d);
     }
 }
 

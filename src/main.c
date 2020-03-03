@@ -7,10 +7,9 @@ int main(int argc, char *argv[]) {
     head.flags = (int *)malloc(sizeof(int) * mx_strlen(MY_FLAGS)); 
     mx_memset(head.flags, 0, mx_strlen(MY_FLAGS) * sizeof(int));
     head.count_flags = head.count_flags + mx_check_flags(argc, argv, &head);
-
     mx_parse(argc, argv, &head);
 
-    system("leaks uls");
+    // system("leaks uls");
 return 0;
 }
 

@@ -53,7 +53,7 @@ static t_lit *createnode(char *name, char *path) {
     return node;
 }
 
-static void mx_opendir2(t_lit **new_d, t_head *head) {
+static void opendir2(t_lit **new_d, t_head *head) {
    if (*new_d)
         mx_output(new_d, head); 
 }
@@ -78,6 +78,6 @@ void mx_opendir(t_lit **new_d, t_head *head) {
             }
         }
     }
-    mx_opendir2(new_d, head);
+    opendir2(new_d, head);
 }
 

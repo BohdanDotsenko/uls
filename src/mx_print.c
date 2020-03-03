@@ -7,7 +7,6 @@ static void print_link_and_color(t_lit *name) {
     }
     else
         mx_printstr(name->name);
-
 }
 
 
