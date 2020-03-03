@@ -1,8 +1,7 @@
 #include "uls.h"
 
-static void all_output(t_lit **new_d, t_head *head) {
-    if ((*new_d)->open != NULL) {
-        mx_out_menu((*new_d)->open, head, 1);  //check flags
+static void all_output_2(t_lit **new_d, t_head *head) {
+    mx_out_menu((*new_d)->open, head, 1);  //check flags
             if (head->flags[mx_get_char_index(MY_FLAGS, 'R')] == 1) {
                 head->output = 1;
                 mx_del_fils(&(*new_d)->open, head);
@@ -11,10 +10,16 @@ static void all_output(t_lit **new_d, t_head *head) {
                     mx_opendir((*new_d)->open, head);
                 }
             }
+}
+
+static void all_output(t_lit **new_d, t_head *head) {
+    if ((*new_d)->open != NULL) {
+        all_output_2(new_d, head);
     }
     else if ((*new_d)->error != NULL) {
             mx_printerr("uls: ");
-            char *str = mx_memrchr((*new_d)->name, '/', mx_strlen((*new_d)->name));
+            char *str = mx_memrchr((*new_d)->name, 
+                                    '/', mx_strlen((*new_d)->name));
             if (!str)
                 mx_printerr((*new_d)->name);
             else
