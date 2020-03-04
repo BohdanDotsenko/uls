@@ -30,7 +30,6 @@ static void create_fd(t_lit ***dirs, t_lit ***args) {
             *dirs = malloc((sum_dir + 1) * sizeof(t_lit *));
 }
 
-
 void mx_del_fils(t_lit ***args, t_head *head) {
     t_lit **dirs = NULL;
     int sum_dir = 0;

@@ -5,9 +5,9 @@
 #include <errno.h>
 #include "libmx.h"
 #include "sys/stat.h"
-#include <sys/types.h>//opendir
-#include <dirent.h> // opendir readdir
-#include <limits.h> // limits PATH_MAX
+#include <sys/types.h>
+#include <dirent.h>
+#include <limits.h>
 #include <pwd.h>
 #include <grp.h>
 #include <sys/acl.h>
@@ -35,16 +35,16 @@
 
 struct stat *buf;
 
-typedef struct  s_lit {
+typedef struct s_lit {
     char *name;
     char *fullpath;
     char *error;
     int what_is_it;
     struct stat t_st;
     struct s_lit **open;
-}               t_lit;
- 
- typedef struct s_head {
+}              t_lit;
+
+typedef struct s_head {
     int *flags;
     int count_flags;
     int sum_dir;
@@ -52,8 +52,7 @@ typedef struct  s_lit {
     int sum_err;
     int output;
     int ex;
- }              t_head;
-
+}              t_head;
 
 typedef struct s_sz {
     int lnk;
@@ -61,8 +60,7 @@ typedef struct s_sz {
     int group;
     int usr;
     bool is_dev;
-}               t_sz;
-
+}              t_sz;
 
 int mx_check_flags(int argc, char *argv[], t_head *head);
 t_lit **mx_getname(int argc, char **argv, int i);
