@@ -99,7 +99,6 @@ char *mx_get_major(t_lit *name);
 void mx_print_sz(t_lit *name, t_sz *size);
 void mx_edit_time(t_lit *name, char *t, t_head *head);
 void mx_print_symb(t_lit *name);
-void mx_printstr_g(t_lit *args);
 void mx_sort(t_lit **new_d, t_head *head);
 void mx_one(t_lit **new_d);
 void mx_multi(t_lit **new_d);
